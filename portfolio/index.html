@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mansoor Ahmed - Flutter Developer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(
+          135deg,
+          #0f0524 0%,
+          #1a0b2e 50%,
+          #2d1b4e 100%
+        );
+        color: #fff;
+        overflow-x: hidden;
+      }
+
+      /* Animated Background */
+      .background-animation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+      }
+
+      .floating-shape {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(60px);
+        animation: float 20s infinite ease-in-out;
+      }
+
+      .shape1 {
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(99, 102, 241, 0.3),
+          transparent
+        );
+        top: -100px;
+        right: -100px;
+        animation-delay: 0s;
+      }
+
+      .shape2 {
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(236, 72, 153, 0.25),
+          transparent
+        );
+        bottom: -150px;
+        left: -150px;
+        animation-delay: 5s;
+      }
+
+      .shape3 {
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(
+          circle,
+          rgba(16, 185, 129, 0.2),
+          transparent
+        );
+        top: 50%;
+        right: 10%;
+        animation-delay: 10s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        25% {
+          transform: translate(30px, -30px) rotate(90deg);
+        }
+        50% {
+          transform: translate(-20px, 20px) rotate(180deg);
+        }
+        75% {
+          transform: translate(20px, 30px) rotate(270deg);
+        }
+      }
+
+      /* Navbar */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(30, 14, 60, 0.9);
+        backdrop-filter: blur(10px);
+        padding: 20px 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+        background: linear-gradient(135deg, #6366f1, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s;
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #6366f1, #ec4899);
+        transition: width 0.3s;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 100px 10% 50px;
+        gap: 50px;
+      }
+
+      .hero-content {
+        flex: 1;
+        animation: slideInLeft 1s ease-out;
+      }
+
+      .hero-content h1 {
+        font-size: 56px;
+        margin-bottom: 10px;
+        background: linear-gradient(135deg, #fff, #6366f1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-content h2 {
+        font-size: 32px;
+        color: #ec4899;
+        margin-bottom: 20px;
+      }
+
+      .hero-content p {
+        font-size: 18px;
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 30px;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .social-links a {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(99, 102, 241, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 20px;
+        transition: all 0.3s;
+        border: 2px solid rgba(99, 102, 241, 0.3);
+      }
+
+      .social-links a:hover {
+        background: linear-gradient(135deg, #6366f1, #ec4899);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.5);
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 20px;
+      }
+
+      .btn {
+        padding: 15px 35px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        display: inline-block;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: #fff;
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(99, 102, 241, 0.6);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: #fff;
+        border: 2px solid #6366f1;
+      }
+
+      .btn-secondary:hover {
+        background: rgba(99, 102, 241, 0.1);
+      }
+
+      .hero-image {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        animation: slideInRight 1s ease-out;
+      }
+
+      .profile-card {
+        background: rgba(30, 30, 62, 0.4);
+        backdrop-filter: blur(10px);
+        border-radius: 30px;
+        padding: 40px;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        text-align: center;
+      }
+
+      .profile-img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #6366f1, #ec4899);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        font-size: 80px;
+        box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
+      }
+
+      .profile-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        display: block;
+      }
+      .contact-info {
+        margin-top: 20px;
+      }
+
+      .contact-info p {
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      /* Section Styles */
+      section {
+        padding: 100px 10%;
+      }
+
+      .section-title {
+        font-size: 42px;
+        text-align: center;
+        margin-bottom: 60px;
+        background: linear-gradient(135deg, #fff, #6366f1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* Skills Section */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .skill-card {
+        background: rgba(30, 30, 62, 0.4);
+        backdrop-filter: blur(10px);
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s;
+      }
+
+      .skill-card:hover {
+        transform: translateY(-10px);
+        border-color: #6366f1;
+        box-shadow: 0 15px 40px rgba(99, 102, 241, 0.3);
+      }
+
+      .skill-card i {
+        font-size: 40px;
+        background: linear-gradient(135deg, #6366f1, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 15px;
+      }
+
+      .skill-card h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      /* Experience Section */
+      .timeline {
+        position: relative;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(180deg, #6366f1, #ec4899);
+      }
+
+      .timeline-item {
+        margin-bottom: 50px;
+        position: relative;
+      }
+
+      .timeline-item:nth-child(odd) {
+        padding-right: calc(50% + 40px);
+        text-align: right;
+      }
+
+      .timeline-item:nth-child(even) {
+        padding-left: calc(50% + 40px);
+      }
+
+      .timeline-content {
+        background: rgba(30, 30, 62, 0.6);
+        backdrop-filter: blur(10px);
+        padding: 30px;
+        border-radius: 20px;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s;
+      }
+
+      .timeline-content:hover {
+        transform: scale(1.03);
+        border-color: #6366f1;
+        box-shadow: 0 15px 40px rgba(99, 102, 241, 0.3);
+      }
+
+      .timeline-dot {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #6366f1, #ec4899);
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
+      }
+
+      .timeline-content h3 {
+        font-size: 24px;
+        color: #6366f1;
+        margin-bottom: 10px;
+      }
+
+      .timeline-content h4 {
+        font-size: 18px;
+        color: #ec4899;
+        margin-bottom: 15px;
+      }
+
+      .timeline-content p {
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.6;
+      }
+
+      /* Projects Section */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+      }
+
+      .project-card {
+        background: rgba(30, 30, 62, 0.4);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        overflow: hidden;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        border-color: #6366f1;
+        box-shadow: 0 20px 50px rgba(99, 102, 241, 0.4);
+      }
+
+      .project-header {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        padding: 30px;
+        text-align: center;
+      }
+
+      .project-header i {
+        font-size: 50px;
+        margin-bottom: 15px;
+      }
+
+      .project-body {
+        padding: 30px;
+      }
+
+      .project-body h3 {
+        font-size: 22px;
+        margin-bottom: 15px;
+        color: #6366f1;
+      }
+
+      .project-body ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .project-body li {
+        padding: 8px 0;
+        color: rgba(255, 255, 255, 0.8);
+        position: relative;
+        padding-left: 25px;
+      }
+
+      .project-body li::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: #ec4899;
+        font-weight: bold;
+      }
+
+      /* Project Gallery Styles */
+      .project-gallery {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        background: rgba(0, 0, 0, 0.3);
+      }
+
+      .gallery-container {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        height: 100%;
+      }
+
+      .gallery-slide {
+        min-width: 100%;
+        height: 100%;
+        position: relative;
+      }
+
+      .gallery-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 15px;
+      }
+
+      .gallery-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(99, 102, 241, 0.8);
+        color: #fff;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        transition: all 0.3s;
+        z-index: 10;
+      }
+
+      .gallery-nav:hover {
+        background: rgba(99, 102, 241, 1);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .gallery-nav.prev {
+        left: 10px;
+      }
+
+      .gallery-nav.next {
+        right: 10px;
+      }
+
+      .gallery-indicators {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        z-index: 10;
+      }
+
+      .gallery-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .gallery-dot.active {
+        background: #6366f1;
+        width: 30px;
+        border-radius: 5px;
+      }
+
+      .view-gallery-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: #fff;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        margin-top: 15px;
+        cursor: pointer;
+        border: none;
+      }
+
+      .view-gallery-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.5);
+      }
+
+      /* Education Section */
+      .education-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .education-card {
+        background: rgba(30, 30, 62, 0.4);
+        backdrop-filter: blur(10px);
+        padding: 40px;
+        border-radius: 20px;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s;
+        text-align: center;
+      }
+
+      .education-card:hover {
+        transform: translateY(-10px);
+        border-color: #6366f1;
+        box-shadow: 0 15px 40px rgba(99, 102, 241, 0.3);
+      }
+
+      .education-card i {
+        font-size: 50px;
+        background: linear-gradient(135deg, #6366f1, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 20px;
+      }
+
+      .education-card h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #6366f1;
+      }
+
+      .education-card h4 {
+        font-size: 18px;
+        color: #ec4899;
+        margin-bottom: 10px;
+      }
+
+      .education-card p {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      /* Contact Section */
+      .contact-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: rgba(30, 30, 62, 0.4);
+        backdrop-filter: blur(10px);
+        padding: 50px;
+        border-radius: 30px;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+
+      .contact-item {
+        text-align: center;
+        padding: 20px;
+        background: rgba(99, 102, 241, 0.1);
+        border-radius: 15px;
+        transition: all 0.3s;
+      }
+
+      .contact-item:hover {
+        background: rgba(99, 102, 241, 0.2);
+        transform: translateY(-5px);
+      }
+
+      .contact-item i {
+        font-size: 30px;
+        color: #6366f1;
+        margin-bottom: 10px;
+      }
+
+      .contact-item a {
+        color: #fff;
+        text-decoration: none;
+        word-break: break-all;
+      }
+
+      /* Footer */
+      footer {
+        background: rgba(10, 5, 36, 0.8);
+        padding: 30px 10%;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      footer p {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* Animations */
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-100px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(100px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* Responsive */
+      /* CV Modal Styles */
+      .cv-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        z-index: 2000;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.3s ease-out;
+      }
+
+      .cv-modal.active {
+        display: flex;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .cv-modal-content {
+        background: rgba(30, 30, 62, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 30px;
+        padding: 40px;
+        max-width: 900px;
+        width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+        border: 2px solid rgba(99, 102, 241, 0.3);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        position: relative;
+        animation: slideUp 0.4s ease-out;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .cv-modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid rgba(99, 102, 241, 0.3);
+      }
+
+      .cv-modal-header h2 {
+        font-size: 32px;
+        background: linear-gradient(135deg, #6366f1, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .close-modal {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(236, 72, 153, 0.2);
+        border: 2px solid rgba(236, 72, 153, 0.3);
+        color: #ec4899;
+        font-size: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+      }
+
+      .close-modal:hover {
+        background: rgba(236, 72, 153, 0.3);
+        transform: rotate(90deg);
+      }
+
+      .cv-preview {
+        width: 100%;
+        height: 500px;
+        border: 2px solid rgba(99, 102, 241, 0.3);
+        border-radius: 15px;
+        margin-bottom: 30px;
+        background: rgba(255, 255, 255, 0.05);
+        overflow: hidden;
+      }
+
+      .cv-preview embed {
+        display: block;
+      }
+
+      .cv-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .cv-btn {
+        padding: 15px 40px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        border: none;
+        font-size: 16px;
+      }
+
+      .cv-btn-download {
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: #fff;
+        box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+      }
+
+      .cv-btn-download:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(16, 185, 129, 0.6);
+      }
+
+      .cv-btn-view {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: #fff;
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+      }
+
+      .cv-btn-view:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(99, 102, 241, 0.6);
+      }
+
+      @media (max-width: 768px) {
+        .hero {
+          flex-direction: column;
+          text-align: center;
+          padding: 100px 5% 50px;
+        }
+
+        .hero-content h1 {
+          font-size: 36px;
+        }
+
+        .hero-content h2 {
+          font-size: 24px;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .timeline::before {
+          left: 0;
+        }
+
+        .timeline-item:nth-child(odd),
+        .timeline-item:nth-child(even) {
+          padding-left: 40px;
+          padding-right: 0;
+          text-align: left;
+        }
+
+        .timeline-dot {
+          left: 0;
+          transform: translateX(-50%);
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+        }
+
+        section {
+          padding: 60px 5%;
+        }
+
+        .cv-modal-content {
+          padding: 20px;
+          width: 95%;
+        }
+
+        .cv-modal-header h2 {
+          font-size: 24px;
+        }
+
+        .cv-preview {
+          height: 400px;
+        }
+
+        .cv-actions {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Animated Background -->
+    <div class="background-animation">
+      <div class="floating-shape shape1"></div>
+      <div class="floating-shape shape2"></div>
+      <div class="floating-shape shape3"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav>
+      <div class="logo">Mansoor Ahmed</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Mansoor Ahmed</h1>
+        <h2>Flutter Developer</h2>
+        <p>
+          Passionate Flutter Developer with a knack for crafting seamless and
+          user-friendly mobile applications. Proficient in delivering top-notch
+          solutions with a focus on performance and aesthetics.
+        </p>
+
+        <div class="social-links">
+          <a
+            href="https://github.com/Mansoor-Ahmed-Butt"
+            target="_blank"
+            title="GitHub"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/mansoor-ahmed-53727325b"
+            target="_blank"
+            title="LinkedIn"
+          >
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="mailto:creativedesigner921@gmail.com" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="tel:+923448822792" title="Phone">
+            <i class="fas fa-phone"></i>
+          </a>
+        </div>
+
+        <div class="cta-buttons">
+          <a href="#contact" class="btn btn-primary">Hire Me</a>
+          <a href="#projects" class="btn btn-secondary">View Projects</a>
+          <button
+            onclick="openCVModal()"
+            class="btn btn-secondary"
+            style="
+              border: 2px solid #6366f1;
+              background: transparent;
+              color: #fff;
+              cursor: pointer;
+            "
+          >
+            View CV
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <div class="profile-card">
+          <div class="profile-img">
+            <img src="assets/my_pic.jpeg" alt="Mansoor Ahmed profile picture" />
+          </div>
+          <h3>Flutter Developer</h3>
+          <div class="contact-info">
+            <p><i class="fas fa-phone"></i> +92-344-8822792</p>
+            <p><i class="fas fa-envelope"></i> creativedesigner921@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> Pakistan</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <h2 class="section-title">My Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <i class="fab fa-flutter"></i>
+          <h3>Flutter</h3>
+          <p>Mobile Development</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-code"></i>
+          <h3>Dart</h3>
+          <p>Programming Language</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-code"></i>
+          <h3>Python</h3>
+          <p>Programming Language</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-mobile-alt"></i>
+          <h3>GetX</h3>
+          <p>State Management</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-project-diagram"></i>
+          <h3>CI/CD (Git Actions)</h3>
+          <p>Agile & Scrum</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-project-diagram"></i>
+          <h3>Project Management</h3>
+          <p>Agile & Scrum</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-users"></i>
+          <h3>Teamwork</h3>
+          <p>Collaboration</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-clock"></i>
+          <h3>Time Management</h3>
+          <p>Productivity</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-comments"></i>
+          <h3>Communi-cation</h3>
+          <p>Clear & Effective</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-language"></i>
+          <h3>Languages</h3>
+          <p>Urdu & English</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+      <h2 class="section-title">Work Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Flutter Developer</h3>
+            <h4>TechnuPur | June 2024 – Present</h4>
+            <p>
+              <strong>Global365-Firm:</strong> Accounting management tool for
+              firm-level financial tracking.
+            </p>
+            <p>
+              <strong>Global365-Accounting:</strong> Comprehensive online
+              accounting platform.
+            </p>
+            <p>
+              <strong>Global365-Payroll:</strong> Advanced payroll processing
+              solution.
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Front End Developer</h3>
+            <h4>Game Ziv | 3 Months</h4>
+            <p>
+              Dynamic UI Development with Kotlin: Leveraged Kotlin to create
+              responsive and visually appealing user interfaces, enhancing
+              player interaction and delivering a seamless gaming experience.
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>SEO Specialist</h3>
+            <h4>World Creative Solution | 1 Year</h4>
+            <p>
+              Expertise in On-Page and Off-Page Optimization: Implemented best
+              practices for on-page SEO, including content optimization and
+              technical enhancements, while also developing effective
+              link-building campaigns to enhance domain authority.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-header">
+            <i class="fas fa-building"></i>
+          </div>
+          <div class="project-body">
+            <h3>Global365 Suite</h3>
+            <p>A Unified Solution for Modern Financial Management</p>
+            <ul>
+              <li>Firm-level financial tracking</li>
+              <li>Company-wide accounting processes</li>
+              <li>Complex payroll operations</li>
+              <li>Cloud-based & scalable platform</li>
+            </ul>
+
+            <!-- Project Image Gallery -->
+            <div class="project-gallery" id="payrollGallery">
+              <div class="gallery-container">
+                <div class="gallery-slide">
+                  <img
+                    src="assets/payroll-1.png"
+                    alt="Global365 Payroll Screenshot 1"
+                  />
+                </div>
+                <div class="gallery-slide">
+                  <img
+                    src="assets/payroll-2.png"
+                    alt="Global365 Payroll Screenshot 2"
+                  />
+                </div>
+                <div class="gallery-slide">
+                  <img
+                    src="assets/payroll-3.png"
+                    alt="Global365 Payroll Screenshot 3"
+                  />
+                </div>
+                <div class="gallery-slide">
+                  <img
+                    src="assets/payroll-4.png"
+                    alt="Global365 Payroll Screenshot 4"
+                  />
+                </div>
+              </div>
+              <button
+                class="gallery-nav prev"
+                onclick="changeSlide('payrollGallery', -1)"
+              >
+                ‹
+              </button>
+              <button
+                class="gallery-nav next"
+                onclick="changeSlide('payrollGallery', 1)"
+              >
+                ›
+              </button>
+              <div class="gallery-indicators">
+                <span
+                  class="gallery-dot active"
+                  onclick="currentSlide('payrollGallery', 0)"
+                ></span>
+                <span
+                  class="gallery-dot"
+                  onclick="currentSlide('payrollGallery', 1)"
+                ></span>
+                <span
+                  class="gallery-dot"
+                  onclick="currentSlide('payrollGallery', 2)"
+                ></span>
+                <span
+                  class="gallery-dot"
+                  onclick="currentSlide('payrollGallery', 3)"
+                ></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-header">
+            <i class="fas fa-tractor"></i>
+          </div>
+          <div class="project-body">
+            <h3>Applicator View</h3>
+            <p>Web-based Agricultural Dashboard</p>
+            <ul>
+              <li>Real-time job management</li>
+              <li>Pilots/Operators Management</li>
+              <li>Grower Tracking</li>
+              <li>Reports and Analytics</li>
+            </ul>
+
+            <!-- Project Image Gallery -->
+            <div class="project-gallery" id="applicatorGallery">
+              <div class="gallery-container">
+                <div class="gallery-slide">
+                  <img
+                    src="assets/applicator-1.png"
+                    alt="Applicator View Screenshot 1"
+                  />
+                </div>
+                <div class="gallery-slide">
+                  <img
+                    src="assets/applicator-2.png"
+                    alt="Applicator View Screenshot 2"
+                  />
+                </div>
+                <div class="gallery-slide">
+                  <img
+                    src="assets/applicator-3.png"
+                    alt="Applicator View Screenshot 3"
+                  />
+                </div>
+                <div class="gallery-slide">
+                  <img
+                    src="assets/applicator-4.png"
+                    alt="Applicator View Screenshot 4"
+                  />
+                </div>
+              </div>
+              <button
+                class="gallery-nav prev"
+                onclick="changeSlide('applicatorGallery', -1)"
+              >
+                ‹
+              </button>
+              <button
+                class="gallery-nav next"
+                onclick="changeSlide('applicatorGallery', 1)"
+              >
+                ›
+              </button>
+              <div class="gallery-indicators">
+                <span
+                  class="gallery-dot active"
+                  onclick="currentSlide('applicatorGallery', 0)"
+                ></span>
+                <span
+                  class="gallery-dot"
+                  onclick="currentSlide('applicatorGallery', 1)"
+                ></span>
+                <span
+                  class="gallery-dot"
+                  onclick="currentSlide('applicatorGallery', 2)"
+                ></span>
+                <span
+                  class="gallery-dot"
+                  onclick="currentSlide('applicatorGallery', 3)"
+                ></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+      <div class="education-grid">
+        <div class="education-card">
+          <i class="fas fa-graduation-cap"></i>
+          <h3>BS - Computer Science</h3>
+          <h4>University of Sialkot</h4>
+          <p>2018 - 2022</p>
+        </div>
+        <div class="education-card">
+          <i class="fas fa-school"></i>
+          <h3>DAE Electrical</h3>
+          <h4>Govt. College of Technology Sialkot</h4>
+          <p>2014 - 2017</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-container">
+        <div class="contact-grid">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <h4>Email</h4>
+            <a href="mailto:creativedesigner921@gmail.com"
+              >creativedesigner921@gmail.com</a
+            >
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <h4>Phone</h4>
+            <a href="tel:+923448822792">+92-344-8822792</a>
+          </div>
+          <div class="contact-item">
+            <i class="fab fa-github"></i>
+            <h4>GitHub</h4>
+            <a href="https://github.com/Mansoor-Ahmed-Butt" target="_blank"
+              >Mansoor-Ahmed-Butt</a
+            >
+          </div>
+          <div class="contact-item">
+            <i class="fab fa-linkedin"></i>
+            <h4>LinkedIn</h4>
+            <a
+              href="https://www.linkedin.com/in/mansoor-ahmed-53727325b"
+              target="_blank"
+              >View Profile</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CV Modal -->
+    <div id="cvModal" class="cv-modal">
+      <div class="cv-modal-content">
+        <div class="cv-modal-header">
+          <h2><i class="fas fa-file-pdf"></i> My CV</h2>
+          <button class="close-modal" onclick="closeCVModal()">×</button>
+        </div>
+        <div class="cv-preview">
+          <embed
+            src="assets/Flutter_CV.pdf#toolbar=0"
+            type="application/pdf"
+            width="100%"
+            height="100%"
+          />
+        </div>
+        <div class="cv-actions">
+          <button onclick="downloadCV()" class="cv-btn cv-btn-download">
+            <i class="fas fa-download"></i> Download CV
+          </button>
+          <button onclick="viewCVInNewTab()" class="cv-btn cv-btn-view">
+            <i class="fas fa-external-link-alt"></i> View in New Tab
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 Mansoor Ahmed. All Rights Reserved. & CSS</p>
+    </footer>
+
+    <script>
+      // Gallery State Management
+      const galleryStates = {};
+
+      function initGallery(galleryId) {
+        if (!galleryStates[galleryId]) {
+          galleryStates[galleryId] = { currentIndex: 0 };
+        }
+      }
+
+      function changeSlide(galleryId, direction) {
+        initGallery(galleryId);
+        const gallery = document.getElementById(galleryId);
+        const container = gallery.querySelector(".gallery-container");
+        const slides = gallery.querySelectorAll(".gallery-slide");
+        const dots = gallery.querySelectorAll(".gallery-dot");
+
+        galleryStates[galleryId].currentIndex += direction;
+
+        if (galleryStates[galleryId].currentIndex >= slides.length) {
+          galleryStates[galleryId].currentIndex = 0;
+        }
+        if (galleryStates[galleryId].currentIndex < 0) {
+          galleryStates[galleryId].currentIndex = slides.length - 1;
+        }
+
+        updateGallery(galleryId);
+      }
+
+      function currentSlide(galleryId, index) {
+        initGallery(galleryId);
+        galleryStates[galleryId].currentIndex = index;
+        updateGallery(galleryId);
+      }
+
+      function updateGallery(galleryId) {
+        const gallery = document.getElementById(galleryId);
+        const container = gallery.querySelector(".gallery-container");
+        const dots = gallery.querySelectorAll(".gallery-dot");
+        const currentIndex = galleryStates[galleryId].currentIndex;
+
+        container.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        dots.forEach((dot, index) => {
+          dot.classList.toggle("active", index === currentIndex);
+        });
+      }
+
+      // Auto-play gallery
+      function startAutoPlay(galleryId, interval = 4000) {
+        setInterval(() => {
+          changeSlide(galleryId, 1);
+        }, interval);
+      }
+
+      // Initialize galleries when page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        initGallery("payrollGallery");
+        startAutoPlay("payrollGallery", 5000);
+        initGallery("applicatorGallery");
+        startAutoPlay("applicatorGallery", 5000);
+      });
+
+      // CV Modal Functions
+      function openCVModal() {
+        document.getElementById("cvModal").classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeCVModal() {
+        document.getElementById("cvModal").classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
+      function downloadCV() {
+        // Create a temporary link element
+        const link = document.createElement("a");
+        link.href = "assets/Flutter_CV.pdf";
+        link.download = "Mansoor_Ahmed_CV.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      function viewCVInNewTab() {
+        window.open("assets/Flutter_CV.pdf", "_blank");
+      }
+
+      // Close modal when clicking outside
+      document
+        .getElementById("cvModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeCVModal();
+          }
+        });
+
+      // Close modal with Escape key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeCVModal();
+        }
+      });
+    </script>
+  </body>
+</html>
